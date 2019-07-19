@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import styles from './Home.css'
 
 function Login({ onSubmit }) {
@@ -22,6 +23,10 @@ function Login({ onSubmit }) {
       </button>
     </div>
   )
+}
+
+Login.propTypes = {
+  onSubmit: PropTypes.func.isRequired
 }
 
 export default Login
