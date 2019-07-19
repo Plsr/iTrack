@@ -3,6 +3,7 @@ import Store from 'electron-store'
 import LoginView from './LoginView'
 import MainView from './MainView'
 import api from '../utils/api'
+import { CredentialsProvider } from '../utils/CredentialsContext'
 
 const STORE_KEYS = {
   accessToken: 'ACCESS_TOKEN'
@@ -45,7 +46,13 @@ function RootView() {
   const accessToken = dataStore.get(STORE_KEYS.accessToken)
   console.log(`accessToken: ${accessToken}`)
 
-  return accessToken ? <MainView /> : <LoginView onSubmit={handleLoginSubmit} />
+  return accessToken ? (
+    <CredentialsProvider value={accessToken}>
+      <MainView />
+    </CredentialsProvider>
+  ) : (
+    <LoginView onSubmit={handleLoginSubmit} />
+  )
 }
 
 export default RootView

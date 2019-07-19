@@ -10,5 +10,11 @@ export default {
       const authHeader = { 'X-NokoToken': authorizationToken }
       return api.get('/account', { headers: { ...authHeader } })
     }
+  },
+  projects: {
+    all(authorizationToken) {
+      const authHeader = { 'X-NokoToken': authorizationToken }
+      return api.get('/projects', { headers: { ...authHeader } })
+    }
   }
 }

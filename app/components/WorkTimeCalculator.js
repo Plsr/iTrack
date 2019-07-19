@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import styles from './Home.css'
 import ArrivalTimeInput from './ArrivalTimeInput'
 import LeaveTimeInput from './LeaveTimeInput'
 import LunchBreakInput from './LunchBreakInput'
 
-function WorkTimeCalculator() {
+function WorkTimeCalculator({ onFinished }) {
   const [arrivalTime, setArrivalTime] = useState(0)
   const [leaveTime, setLeaveTime] = useState(0)
-  const [lunchBreakTime, setLunchBreakTime] = useState(0)
+  const [lunchBreakTime, setLunchBreakTime] = useState(0) // eslint-disable-line
   const [currentStep, setCurrentStep] = useState(1)
 
   function handleArrivalTimeSubmit(time) {
@@ -24,8 +25,7 @@ function WorkTimeCalculator() {
 
   function handleLunchBreakTimeSubmit(time) {
     const lunchTimeFloat = timeStringToFloat(time)
-    setLunchBreakTime(lunchTimeFloat)
-    increaseCurrentStep()
+    onFinished(timeFloatToString(leaveTime - arrivalTime - lunchTimeFloat))
   }
 
   function increaseCurrentStep() {
@@ -76,6 +76,10 @@ function WorkTimeCalculator() {
   }
 
   return <div className={styles.container}>{renderStep()}</div>
+}
+
+WorkTimeCalculator.propTypes = {
+  onFinished: PropTypes.func.isRequired
 }
 
 export default WorkTimeCalculator

@@ -8,6 +8,10 @@ function LunchBreakInput({ totalOfficeTime, onSubmit }) {
     setLunchBreakTime(e.target.value)
   }
 
+  function handleSubmitClick() {
+    onSubmit(lunchBreakTime)
+  }
+
   return (
     <div>
       <h2>Nice, {totalOfficeTime} hours at work!</h2>
@@ -17,7 +21,11 @@ function LunchBreakInput({ totalOfficeTime, onSubmit }) {
         value={lunchBreakTime}
         onChange={handleLunchBreakTimeChange}
       />
-      <button type="submit" disabled={!setLunchBreakTime} onClick={onSubmit}>
+      <button
+        type="submit"
+        disabled={!setLunchBreakTime}
+        onClick={handleSubmitClick}
+      >
         next
       </button>
     </div>
