@@ -4,7 +4,7 @@ import ArrivalTimeInput from './ArrivalTimeInput'
 import LeaveTimeInput from './LeaveTimeInput'
 import LunchBreakInput from './LunchBreakInput'
 
-function Home() {
+function WorkTimeCalculator() {
   const [arrivalTime, setArrivalTime] = useState(0)
   const [leaveTime, setLeaveTime] = useState(0)
   const [lunchBreakTime, setLunchBreakTime] = useState(0)
@@ -78,4 +78,4 @@ function Home() {
   return <div className={styles.container}>{renderStep()}</div>
 }
 
-export default Home
+export default WorkTimeCalculator

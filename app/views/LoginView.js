@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import styles from './Home.css'
 
-function Login({ onSubmit }) {
+function LoginView({ onSubmit }) {
   const [token, setToken] = useState('')
 
   function handleInputChange(e) {
@@ -14,7 +13,7 @@ function Login({ onSubmit }) {
   }
 
   return (
-    <div className={styles.container} data-tid="container">
+    <div data-tid="container">
       <h2>Login</h2>
       <p>Please enter your Personal Access Token</p>
       <input type="text" value={token} onChange={handleInputChange} />
@@ -25,8 +24,8 @@ function Login({ onSubmit }) {
   )
 }
 
-Login.propTypes = {
+LoginView.propTypes = {
   onSubmit: PropTypes.func.isRequired
 }
 
-export default Login
+export default LoginView

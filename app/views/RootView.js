@@ -1,7 +1,7 @@
 import React from 'react'
 import Store from 'electron-store'
-import Home from '../components/Home'
-import Login from '../components/Login'
+import LoginView from './LoginView'
+import MainView from './MainView'
 import api from '../utils/api'
 
 const STORE_KEYS = {
@@ -15,7 +15,7 @@ const schema = {
   }
 }
 
-function Root() {
+function RootView() {
   async function isValidToken(token) {
     try {
       const data = await api.user.account(token)
@@ -45,7 +45,7 @@ function Root() {
   const accessToken = dataStore.get(STORE_KEYS.accessToken)
   console.log(`accessToken: ${accessToken}`)
 
-  return accessToken ? <Home /> : <Login onSubmit={handleLoginSubmit} />
+  return accessToken ? <MainView /> : <LoginView onSubmit={handleLoginSubmit} />
 }
 
-export default Root
+export default RootView
